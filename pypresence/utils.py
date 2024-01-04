@@ -19,6 +19,8 @@ def remove_none(d: dict):
                 del d[item]
         elif d[item] is None:
             del d[item]
+        elif hasattr(d[item], "__len__") and not len(d[item]):
+            del d[item]
     return d
 
 def test_ipc_path(path):
